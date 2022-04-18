@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MVVM_KOTLIN_27</string>
+    <string name="hamburger">≡</string>
+    <string name="tab_recyclerview">RecyclerView</string>
+    <string name="tab_menu1">Menu1</string>
+    <string name="tab_menu2">Menu2</string>
+    <string name="tab_logout">logout</string>
+</resources>

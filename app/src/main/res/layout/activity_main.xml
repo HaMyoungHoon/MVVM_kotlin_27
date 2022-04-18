@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="dataContext"
+            type="com.mvvm_kotlin_27.MainActivityViewModel" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button android:id="@+id/btnCollapse"
+            android:text="@string/hamburger"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:textAllCaps="false"
+            android:visibility="@{ dataContext.collapseVisible }"
+            android:onClick="@{ () -> dataContext.collapseCommand() }"/>
+
+        <FrameLayout android:id="@+id/tabMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@id/btnCollapse"
+            android:visibility="@{ dataContext.menuVisible }"
+            android:background="@drawable/t_border"
+            android:layout_marginTop="5dp">
+            <TabWidget android:id="@android:id/tabs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <Button android:id="@+id/btnRecyclerView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_recyclerview"
+                    android:textSize="10dp"
+                    android:textAllCaps="false"
+                    android:drawableTop="@drawable/ic_recyclerview"
+                    android:gravity="bottom|center"
+                    android:layout_marginTop="10dp"
+                    android:background="@{ dataContext.recyclerviewSelected == true ? @color/menuBtnEnable : @color/menuBtnDisable}"
+                    android:onClick="@{ () -> dataContext.recyclerviewCommand() }"/>
+                <Button android:id="@+id/btnMenu2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_menu2"
+                    android:textAllCaps="false"
+                    android:drawableTop="@drawable/ic_menu2"
+                    android:gravity="bottom|center"
+                    android:layout_marginTop="10dp"
+                    android:background="@{ dataContext.menu2Selected == true ? @color/menuBtnEnable : @color/menuBtnDisable}"
+                    android:onClick="@{ () -> dataContext.menu2Command() }"/>
+                <Button android:id="@+id/btnLogout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_logout"
+                    android:textAllCaps="false"
+                    android:drawableTop="@drawable/ic_logout"
+                    android:gravity="bottom|center"
+                    android:layout_marginTop="10dp"
+                    android:background="@{ dataContext.logOutSelected == true ? @color/menuBtnEnable : @color/menuBtnDisable}"
+                    android:onClick="@{ () -> dataContext.logoutCommand() }"/>
+            </LinearLayout>
+        </FrameLayout>
+
+        <FrameLayout android:id="@+id/flContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/tabMenu"/>
+    </RelativeLayout>
+</layout>

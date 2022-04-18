@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="dataContext"
+            type="com.mvvm_kotlin_27.screen.recyclerfrag.sub.RecyclerViewFragViewModel" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/btnAdd">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvSample"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:items="@{dataContext.listItems}"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:background="@color/colorBase"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true" />
+                </RelativeLayout>
+            </ScrollView>
+
+        </HorizontalScrollView>
+
+        <Button android:id="@+id/btnAdd"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="Add"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:onClick="@{() -> dataContext.addCommand() }"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="5dp" />
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="del"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:onClick="@{() -> dataContext.delCommand() }"
+            android:layout_marginStart="5dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@id/btnAdd"/>
+    </RelativeLayout>
+
+</layout>

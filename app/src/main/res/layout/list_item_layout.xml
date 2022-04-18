@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+    <data>
+        <variable
+            name="dataContext"
+            type="com.mvvm_kotlin_27.screen.recyclerfrag.sub.RecyclerSetItem" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:background="@android:color/transparent">
+
+        <!-- DateTime -->
+        <TextView android:id="@+id/list_item_1"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="@{ dataContext._dateTime }"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:nextFocusRight="@id/list_item_2"
+            android:background="@drawable/t_border"
+            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"/>
+        <!-- Name -->
+        <EditText android:id="@+id/list_item_2"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="@={ dataContext._name }"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:inputType="text"
+            android:nextFocusRight="@id/list_item_3"
+            android:background="@drawable/t_border"
+            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/list_item_1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"/>
+        <!-- Number -->
+        <EditText android:id="@+id/list_item_3"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="@={ dataContext._number }"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:inputType="number"
+            android:nextFocusRight="@id/list_item_4"
+            android:background="@drawable/t_border"
+            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/list_item_2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"/>
+        <!-- OX -->
+        <Button android:id="@+id/list_item_4"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="@{ dataContext._OX }"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:onClick="@{() -> dataContext.oxCommand() }"
+            android:nextFocusRight="@id/list_item_1"
+            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintTop_toBottomOf="@id/list_item_3"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
